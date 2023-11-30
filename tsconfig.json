@@ -23,6 +23,6 @@
     "noEmitOnError": false, //error 실행
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "vite.config.dev.ts"]
+  "include": ["src", "vite.config.dev.ts", ".storybook"]
   // "references": [{ "path": "./tsconfig.node.json" }]
 }
