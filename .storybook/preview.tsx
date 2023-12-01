@@ -1,6 +1,8 @@
 import type {Preview} from '@storybook/react'
 import {CssBaseline, ThemeProvider} from '@mui/material'
 import {theme} from '../src/theme/index'
+import React from 'react'
+
 export const preview: Preview = {
   parameters: {
     actions: {argTypesRegex: '^on[A-Z].*'},
