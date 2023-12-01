@@ -10,11 +10,13 @@ export const preview: Preview = {
       expanded: true,
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/i,
+        date: /Date$/,
       },
     },
   },
 }
+
+//MUI 테마연동 
 
 export const withMuiTheme = Story => {
   return (

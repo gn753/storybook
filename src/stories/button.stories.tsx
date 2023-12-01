@@ -1,5 +1,5 @@
+import Button from '@components/base/button'
 import type {Meta, StoryObj} from '@storybook/react'
-import Button from './button'
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -12,7 +12,7 @@ export const Primary: Story = {
   args: {
     title: 'Primary',
     variant: 'contained',
-    color: 'primary',
+    color: 'main',
   },
 }
 
@@ -20,7 +20,7 @@ export const Secondary = {
   args: {
     title: 'Secondary',
     variant: 'contained',
-    color: 'secondary',
+    color: 'dark',
   },
 }
 
@@ -28,7 +28,7 @@ export const Outlined = {
   args: {
     title: 'Outlined',
     variant: 'outlined',
-    color: 'primary',
+    color: '100',
   },
 }
 
@@ -36,6 +36,6 @@ export const Text = {
   args: {
     title: 'Text',
     variant: 'text',
-    color: 'primary',
+    color: 'light',
   },
 }

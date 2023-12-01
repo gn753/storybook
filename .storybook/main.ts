@@ -1,5 +1,5 @@
 import type {StorybookConfig} from '@storybook/react-vite'
-
+import {mergeConfig} from 'vite'
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
@@ -8,6 +8,9 @@ const config: StorybookConfig = {
     '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
   ],
+  core: {
+    builder: '@storybook/builder-vite',
+  },
   framework: {
     name: '@storybook/react-vite',
     options: {},
@@ -15,25 +18,14 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
-  typescript: {
-    check: false,
-    checkOptions: {},
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      // speeds up storybook build time
-      allowSyntheticDefaultImports: true,
-      // speeds up storybook build time
-      esModuleInterop: false,
-      // makes union prop types like variant and size appear as select controls
-      shouldExtractLiteralValuesFromEnum: true,
-      // makes string and boolean types that can be undefined appear as inputs and switches
-      shouldRemoveUndefinedFromOptional: true,
-      // Filter out third-party props from node_modules except @mui packages
-      propFilter: prop =>
-        prop.parent
-          ? !/node_modules\/(?!@mui)/.test(prop.parent.fileName)
-          : true,
-    },
+  async viteFinal(config) {
+    // Merge custom configuration into the default config
+    return mergeConfig(config, {
+      // Add dependencies to pre-optimization
+      optimizeDeps: {
+        include: ['storybook-dark-mode'],
+      },
+    })
   },
 }
 export default config
